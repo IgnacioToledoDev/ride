@@ -17,9 +17,9 @@ class PlanPricing extends Model
     protected $table = 'plan_pricing';
 
     protected $fillable = [
-        'planId',
+        'plan_id',
         'price',
-        'billingCycle'
+        'billing_cycle'
     ];
 
 

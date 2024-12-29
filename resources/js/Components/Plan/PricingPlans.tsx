@@ -8,26 +8,14 @@ interface Plan {
     storageLimit: number,
     bandwidthLimit: number,
     ramLimit: number,
-    description: string,
-    isPublic: boolean,
-    isPopular: boolean
-    pricing: Pricing,
-    features: Feature[]
+    isPopular: boolean,
+    billingCycle: billingCycle,
+    price: number,
+    features: string,
 }
 
 interface Plans {
     plans: Plan[]
-}
-
-interface Pricing {
-    planId: number,
-    price: number,
-    billingCycle: billingCycle
-}
-
-interface Feature {
-    key: number;
-    description: string
 }
 
 enum billingCycle {
@@ -36,15 +24,16 @@ enum billingCycle {
 }
 
 const PricingPlans = ({ plans } : Props<Plans>) => {
+    console.log(plans);
     return (
-        <div className="bg-gray-100 py-12">
+        <article className="bg-gray-100 py-12">
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
                     Our Pricing Plans
                 </h2>
 
 
-                <div className="flex flex-wrap justify-center pb-2.5" role="group">
+                <section className="flex flex-wrap justify-center pb-2.5" role="group">
                     <button type="button"
                             className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                         Monthly
@@ -53,9 +42,9 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                             className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                         Yearly
                     </button>
-                </div>
+                </section>
 
-                <div className="flex flex-wrap justify-center gap-6">
+                <section className="flex flex-wrap justify-center gap-6">
                     {plans.map((plan: Plan
                         , index: number) => (
                         <div
@@ -74,13 +63,13 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                                 {plan.name}
                             </h3>
                             <div className="text-4xl font-bold text-gray-900 mb-4">
-                                ${plan.pricing.price}
-                                <span className="text-base text-gray-500"> {plan.pricing.billingCycle}</span>
+                                ${plan.price}
+                                <span className="text-base text-gray-500"> {plan.billingCycle}</span>
                             </div>
                             <ul className="mb-6">
-                                {plan.features.map((feature: Feature, i: number) => (
+                                {plan.features.split(', ').map((feature: string, i: number) => (
                                     <li key={i} className="text-gray-600 mb-2">
-                                        ✓ {feature.description}
+                                        ✓ {feature}
                                     </li>
                                 ))}
                             </ul>
@@ -90,9 +79,9 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                             </button>
                         </div>
                     ))}
-                </div>
+                </section>
             </div>
-        </div>
+        </article>
     );
 };
 

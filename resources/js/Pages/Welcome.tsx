@@ -7,6 +7,7 @@ export default function Welcome({
     auth,
     laravelVersion,
     phpVersion,
+    plans,
 }: PageProps<{ laravelVersion: string; phpVersion: string }>) {
     const handleImageError = () => {
         document
@@ -68,7 +69,7 @@ export default function Welcome({
 
                         <main>
 
-                            <PricingPlans />
+                            <PricingPlans plans={plans}/>
                         </main>
 
                         <footer className="py-16 text-center text-sm text-black dark:text-white/70">

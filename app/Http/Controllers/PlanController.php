@@ -11,11 +11,8 @@ class PlanController extends Controller
 {
     public function index(): Response
     {
-        $plans = Plan::with('features')
-            ->with('plan_pricing')
-            ->where(['isPublic' => true])
-            ->get();
+        $plans = Plan::all();
 
-        return Inertia::render('Plans/PricingPlans', ['plans' => $plans]);
+        return Inertia::render('plans.index', ['plans' => $plans]);
     }
 }
