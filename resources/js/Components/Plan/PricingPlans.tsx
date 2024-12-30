@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 // @ts-ignore
 import {Props} from "@headlessui/react/dist/types";
 
@@ -19,12 +19,19 @@ interface Plans {
 }
 
 enum billingCycle {
-    MONTHLY = 'Monthly',
-    YEARLY = 'Yearly'
+    MONTHLY = 'monthly',
+    YEARLY = 'yearly'
 }
 
 const PricingPlans = ({ plans } : Props<Plans>) => {
-    console.log(plans);
+    const [selectedCycle, setSelectedCycle] = useState<billingCycle>(
+        billingCycle.MONTHLY
+    );
+
+    const filteredPlans = plans.filter(
+        (plan: Plan) => plan.billingCycle === selectedCycle
+    );
+
     return (
         <article className="bg-gray-100 py-12">
             <div className="container mx-auto px-6">
@@ -32,23 +39,36 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                     Our Pricing Plans
                 </h2>
 
-
                 <section className="flex flex-wrap justify-center pb-2.5" role="group">
-                    <button type="button"
-                            className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                    <button
+                        type="button"
+                        onClick={() => setSelectedCycle(billingCycle.MONTHLY)}
+                        className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 ${
+                            selectedCycle === billingCycle.MONTHLY
+                                ? "text-blue-700"
+                                : ""
+                        } rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
+                    >
                         Monthly
                     </button>
-                    <button type="button"
-                            className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                    <button
+                        type="button"
+                        onClick={() => setSelectedCycle(billingCycle.YEARLY)}
+                        className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 ${
+                            selectedCycle === billingCycle.YEARLY
+                                ? "text-blue-700"
+                                : ""
+                        } rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
+                    >
                         Yearly
                     </button>
                 </section>
 
+
                 <section className="flex flex-wrap justify-center gap-6">
-                    {plans.map((plan: Plan
-                        , index: number) => (
+                    {filteredPlans.map((plan: Plan) => (
                         <div
-                            key={index}
+                            key={plan.id}
                             className={`w-full sm:w-1/3 lg:w-1/4 p-6 border rounded-lg shadow-md bg-white ${
                                 plan.isPopular ? "border-blue-500" : "border-gray-300"
                             }`}
@@ -64,10 +84,13 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                             </h3>
                             <div className="text-4xl font-bold text-gray-900 mb-4">
                                 ${plan.price}
-                                <span className="text-base text-gray-500"> {plan.billingCycle}</span>
+                                <span className="text-base text-gray-500">
+                  {" "}
+                                   per {plan.billingCycle}
+                </span>
                             </div>
                             <ul className="mb-6">
-                                {plan.features.split(', ').map((feature: string, i: number) => (
+                                {plan.features.split(", ").map((feature: string, i: number) => (
                                     <li key={i} className="text-gray-600 mb-2">
                                         ✓ {feature}
                                     </li>

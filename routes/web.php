@@ -19,14 +19,14 @@ Route::get('/', function () {
                 return $plan->planPricings->map(function ($pricing) use ($plan) {
                     return [
                         'id' => $plan->id,
-                        'plan_name' => $plan->name,
+                        'name' => $plan->name,
                         'price' => $pricing->price,
-                        'billing_cycle' => $pricing->billing_cycle,
+                        'billingCycle' => $pricing->billing_cycle,
                         'features' => $plan->features->pluck('feature')->join(', '),
-                        'is_popular' => (bool) $plan->is_popular,
-                        'storage_limit' => $plan->storage_limit,
-                        'bandwidth_limit' => $plan->bandwidth_limit,
-                        'ram_limit' => $plan->ram_limit,
+                        'isPopular' => (bool) $plan->is_popular,
+                        'storageLimit' => $plan->storage_limit,
+                        'bandwidthLimit' => $plan->bandwidth_limit,
+                        'ramLimit' => $plan->ram_limit,
                     ];
                 });
             })
