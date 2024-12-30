@@ -1,31 +1,16 @@
 import React, {useState} from 'react';
 // @ts-ignore
-import {Props} from "@headlessui/react/dist/types";
-
-interface Plan {
-    id: number,
-    name: string,
-    storageLimit: number,
-    bandwidthLimit: number,
-    ramLimit: number,
-    isPopular: boolean,
-    billingCycle: billingCycle,
-    price: number,
-    features: string,
-}
+import { Props } from "@headlessui/react/dist/types";
+import { Plan, BillingCycle } from "@/interfaces/plan"
 
 interface Plans {
     plans: Plan[]
 }
 
-enum billingCycle {
-    MONTHLY = 'monthly',
-    YEARLY = 'yearly'
-}
 
 const PricingPlans = ({ plans } : Props<Plans>) => {
-    const [selectedCycle, setSelectedCycle] = useState<billingCycle>(
-        billingCycle.MONTHLY
+    const [selectedCycle, setSelectedCycle] = useState<BillingCycle>(
+        BillingCycle.MONTHLY
     );
 
     const filteredPlans = plans.filter(
@@ -42,9 +27,9 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                 <section className="flex flex-wrap justify-center pb-2.5" role="group">
                     <button
                         type="button"
-                        onClick={() => setSelectedCycle(billingCycle.MONTHLY)}
+                        onClick={() => setSelectedCycle(BillingCycle.MONTHLY)}
                         className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 ${
-                            selectedCycle === billingCycle.MONTHLY
+                            selectedCycle === BillingCycle.MONTHLY
                                 ? "text-blue-700"
                                 : ""
                         } rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
@@ -53,9 +38,9 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                     </button>
                     <button
                         type="button"
-                        onClick={() => setSelectedCycle(billingCycle.YEARLY)}
+                        onClick={() => setSelectedCycle(BillingCycle.YEARLY)}
                         className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 ${
-                            selectedCycle === billingCycle.YEARLY
+                            selectedCycle === BillingCycle.YEARLY
                                 ? "text-blue-700"
                                 : ""
                         } rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
