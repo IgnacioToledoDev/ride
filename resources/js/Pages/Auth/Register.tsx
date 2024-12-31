@@ -21,7 +21,9 @@ export default function Register() {
             onFinish: () => reset('password', 'password_confirmation'),
         });
     };
-    const planSelected = new URLSearchParams(document.location.search).get('plan');
+    const params = new URLSearchParams(document.location.search);
+    const billing = params.get('billing')
+    const plan = params.get('plan')
     return (
         <GuestLayout>
             <Head title="Register"/>
@@ -110,12 +112,14 @@ export default function Register() {
                         Register
                     </PrimaryButton>
 
-                    <Link
-                        href={route('login')}
-                        className="rounded-md text-sm pt-8 text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
-                    >
-                        Already registered?
-                    </Link>
+                    <div className="pt-8">
+                        <Link
+                            href={route('login')}
+                            className="rounded-md block text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                        >
+                            Already registered?
+                        </Link>
+                    </div>
                 </div>
             </form>
         </GuestLayout>

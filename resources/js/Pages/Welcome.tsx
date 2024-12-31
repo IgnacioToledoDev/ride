@@ -56,12 +56,6 @@ export default function Welcome({
                                         >
                                             Iniciar sesion
                                         </Link>
-                                        {/*<Link*/}
-                                        {/*    href={route('register')}*/}
-                                        {/*    className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"*/}
-                                        {/*>*/}
-                                        {/*    Register*/}
-                                        {/*</Link>*/}
                                     </>
                                 )}
                             </nav>
@@ -72,7 +66,7 @@ export default function Welcome({
                             <PricingPlans plans={plans}/>
                         </main>
 
-                        <footer className="py-16 text-center text-sm text-black dark:text-white/70">
+                        <footer className="py-16 text-center text-sm text-black">
                             Laravel v{laravelVersion} (PHP v{phpVersion})
                         </footer>
                     </div>

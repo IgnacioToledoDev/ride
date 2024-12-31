@@ -83,7 +83,7 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                                 ))}
                             </ul>
                             <Link
-                                href={route('register', { plan: plan.id })}
+                                href={route('register', { plan: plan.id, billing: selectedCycle})}
                                 className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition px-4 flex items-center text-center justify-center"
                             >
                                 Elegir plan
