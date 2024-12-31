@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 // @ts-ignore
 import { Props } from "@headlessui/react/dist/types";
 import { Plan, BillingCycle } from "@/interfaces/plan"
+import { Head, Link } from '@inertiajs/react';
 
 interface Plans {
     plans: Plan[]
@@ -81,10 +82,12 @@ const PricingPlans = ({ plans } : Props<Plans>) => {
                                     </li>
                                 ))}
                             </ul>
-                            <button
-                                className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-                                Choose Plan
-                            </button>
+                            <Link
+                                href={route('register', { plan: plan.id })}
+                                className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition px-4 flex items-center text-center justify-center"
+                            >
+                                Elegir plan
+                            </Link>
                         </div>
                     ))}
                 </section>

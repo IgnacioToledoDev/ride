@@ -52,16 +52,16 @@ export default function Welcome({
                                     <>
                                         <Link
                                             href={route('login')}
-                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                                            className="rounded-md px-3 py-2 border-l-black text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                                         >
-                                            Log in
+                                            Iniciar sesion
                                         </Link>
-                                        <Link
-                                            href={route('register')}
-                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
-                                        >
-                                            Register
-                                        </Link>
+                                        {/*<Link*/}
+                                        {/*    href={route('register')}*/}
+                                        {/*    className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"*/}
+                                        {/*>*/}
+                                        {/*    Register*/}
+                                        {/*</Link>*/}
                                     </>
                                 )}
                             </nav>
