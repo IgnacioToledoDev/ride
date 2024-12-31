@@ -7,6 +7,7 @@ export default function Welcome({
     auth,
     laravelVersion,
     phpVersion,
+    plans,
 }: PageProps<{ laravelVersion: string; phpVersion: string }>) {
     const handleImageError = () => {
         document
@@ -51,15 +52,9 @@ export default function Welcome({
                                     <>
                                         <Link
                                             href={route('login')}
-                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                                            className="rounded-md px-3 py-2 border-l-black text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                                         >
-                                            Log in
-                                        </Link>
-                                        <Link
-                                            href={route('register')}
-                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
-                                        >
-                                            Register
+                                            Iniciar sesion
                                         </Link>
                                     </>
                                 )}
@@ -68,10 +63,10 @@ export default function Welcome({
 
                         <main>
 
-                            <PricingPlans />
+                            <PricingPlans plans={plans}/>
                         </main>
 
-                        <footer className="py-16 text-center text-sm text-black dark:text-white/70">
+                        <footer className="py-16 text-center text-sm text-black">
                             Laravel v{laravelVersion} (PHP v{phpVersion})
                         </footer>
                     </div>
