@@ -24,15 +24,17 @@ export default function Register() {
     const params = new URLSearchParams(document.location.search);
     const billing = params.get('billing')
     const plan = params.get('plan')
+
+    console.log(billing, plan)
     return (
         <GuestLayout>
-            <Head title="Register"/>
+            <Head title="Register" />
             <h2
-                className="text-gray-50 items-center text-center py-4 text-2xl font-semibold"
+                className="text-black/70 items-center text-center py-4 text-2xl font-semibold"
             >Crear cuenta</h2>
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name"/>
+                    <InputLabel htmlFor="name" value="Name" />
 
                     <TextInput
                         id="name"
@@ -45,11 +47,11 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2"/>
+                    <InputError message={errors.name} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email"/>
+                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
                         id="email"
@@ -62,11 +64,11 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.email} className="mt-2"/>
+                    <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password"/>
+                    <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
                         id="password"
@@ -79,7 +81,7 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.password} className="mt-2"/>
+                    <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
@@ -115,7 +117,7 @@ export default function Register() {
                     <div className="pt-8">
                         <Link
                             href={route('login')}
-                            className="rounded-md block text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                            className="rounded-md block text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         >
                             Already registered?
                         </Link>
