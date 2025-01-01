@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Config;
 
 class FlowService {
 
-    protected $apiKey;
-    protected $secretKey;
+    protected string $apiKey;
+    protected string $secretKey;
 
 
     public function __construct() {
