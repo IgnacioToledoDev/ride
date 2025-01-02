@@ -7,11 +7,16 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 
 export default function Register() {
+    const getUserLocale = () => {
+        return navigator.language || navigator.languages[0];
+    }
+
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         password: '',
         password_confirmation: '',
+        locale: getUserLocale(),
     });
 
     const submit: FormEventHandler = (e) => {
@@ -25,7 +30,7 @@ export default function Register() {
     const billing = params.get('billing')
     const plan = params.get('plan')
 
-    console.log(billing, plan)
+    console.log(billing, plan, getUserLocale())
     return (
         <GuestLayout>
             <Head title="Register" />
