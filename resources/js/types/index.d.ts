@@ -14,7 +14,7 @@ interface Plans {
 interface Pricing {
     planId: number,
     price: number,
-    billingCycle: billingCycle
+    billingCycle: BillingCycle
 }
 
 interface Feature {

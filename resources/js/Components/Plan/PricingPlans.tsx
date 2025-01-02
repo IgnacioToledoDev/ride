@@ -22,7 +22,7 @@ const PricingPlans = ({ plans }: Props<Plans>) => {
         <article className="bg-gray-100 py-12">
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-                    Our Pricing Plans
+                    Elige el plan perfecto para ti
                 </h2>
 
                 <section className="flex flex-wrap justify-center pb-2.5" role="group">
@@ -34,7 +34,7 @@ const PricingPlans = ({ plans }: Props<Plans>) => {
                             : ""
                             } rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
                     >
-                        Monthly
+                        Mensual
                     </button>
                     <button
                         type="button"
@@ -44,7 +44,7 @@ const PricingPlans = ({ plans }: Props<Plans>) => {
                             : ""
                             } rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700`}
                     >
-                        Yearly
+                        Anual
                     </button>
                 </section>
 
@@ -59,7 +59,7 @@ const PricingPlans = ({ plans }: Props<Plans>) => {
                             {plan.isPopular && (
                                 <div
                                     className="text-sm uppercase text-white bg-blue-500 px-4 py-1 rounded-full inline-block mb-4">
-                                    Most Popular
+                                    Más popular
                                 </div>
                             )}
                             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
@@ -69,7 +69,7 @@ const PricingPlans = ({ plans }: Props<Plans>) => {
                                 ${plan.price}
                                 <span className="text-base text-gray-500">
                                     {" "}
-                                    per {plan.billingCycle}
+                                    por {plan.billingCycle}
                                 </span>
                             </div>
                             <ul className="mb-6">
