@@ -37,6 +37,8 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'locale' => 'required|string|max:10',
+            'billingCycle' => 'required|string|max:10',
+            'planId' => 'required|string|max:2',
         ]);
 
         $user = User::create([
@@ -46,10 +48,14 @@ class RegisteredUserController extends Controller
             'locale' => $request->locale ?? App::getLocale(),
         ]);
 
+        // todo create a new order by buy a subscription using the plan and the billing cycle
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('subscription.payment', [
+
+        ] ,absolute: false));
     }
 }

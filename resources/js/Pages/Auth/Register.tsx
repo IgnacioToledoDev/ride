@@ -10,6 +10,9 @@ export default function Register() {
     const getUserLocale = () => {
         return navigator.language || navigator.languages[0];
     }
+    const params = new URLSearchParams(document.location.search);
+    const billing = params.get('billing')
+    const plan = params.get('plan')
 
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
@@ -17,6 +20,8 @@ export default function Register() {
         password: '',
         password_confirmation: '',
         locale: getUserLocale(),
+        billingCycle: billing,
+        planId: plan,
     });
 
     const submit: FormEventHandler = (e) => {
@@ -26,11 +31,7 @@ export default function Register() {
             onFinish: () => reset('password', 'password_confirmation'),
         });
     };
-    const params = new URLSearchParams(document.location.search);
-    const billing = params.get('billing')
-    const plan = params.get('plan')
 
-    console.log(billing, plan, getUserLocale())
     return (
         <GuestLayout>
             <Head title="Register" />
@@ -116,7 +117,7 @@ export default function Register() {
 
                 <div className="mt-4 flex items-center justify-center flex-col">
                     <PrimaryButton className="mx-3 pb-2" disabled={processing}>
-                        Register
+                        Crear cuenta
                     </PrimaryButton>
 
                     <div className="pt-8">
